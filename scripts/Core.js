@@ -7,6 +7,7 @@ var blockSubscription;
 
 var events = {};
 var coinbase;
+var params;
 
 function init(){
     $('#statusDisplay').text('Disconnected!');
@@ -39,6 +40,10 @@ function connect(){
             web3.eth.getAccounts()
                 .then((accounts) => {
                     coinbase = accounts[0];
+                    params =  {
+                        from : coinbase,
+                        gas : 1000000
+                    }
                     $('#coinbaseDisplay').text(coinbase);
                 })
         })
@@ -111,10 +116,7 @@ function deploy(){
 }
 
 var hook;
-var params = {
-    from : coinbase,
-    gas : 1000000
-}
+
 function latch(){
     contract = new eth.Contract(abi, $('#contractAddress').val());
     hook = contract.methods;

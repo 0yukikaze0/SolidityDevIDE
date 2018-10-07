@@ -102,6 +102,11 @@ span{
 .eventDetails{
     float:right;
 }
+.eventCount{
+    background-color: #FF5722;
+    padding: 5px;
+    border-radius: 10px;
+}
 table{
     font-size:10px;
     color: #ffffff;

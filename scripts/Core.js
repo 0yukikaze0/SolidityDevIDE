@@ -140,3 +140,13 @@ function subscribeEvents(){
         $(`#${eventName} .subscriptionStatus`).text('Subscribed');
     }
 }
+
+function toHex(input){
+	var arr1 = [];
+	for (var n = 0, l = input.length; n < l; n ++) 
+     {
+		var hex = Number(input.charCodeAt(n)).toString(16);
+		arr1.push(hex);
+	 }
+	return '0x' + arr1.join('');
+}

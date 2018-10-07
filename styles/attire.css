@@ -91,6 +91,7 @@ span{
     margin: 10px;
     padding: 5px;
     background-color: #444444;
+    overflow: hidden;
 }
 
 .subscriptionStatus{
@@ -110,4 +111,9 @@ span{
 table{
     font-size:10px;
     color: #ffffff;
+}
+.pastEventsButton{
+    background-color: #4CAF50;
+    margin-left: 10px;
+    display: none;
 }

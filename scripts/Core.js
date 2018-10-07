@@ -70,14 +70,17 @@ function parseSource(){
         $('#eventsCatalog').html('')
         for(let index in eventsCatalog) {
             $('#eventsCatalog').append(`<div class="eventCard" id="${eventsCatalog[index]}">
-                ${eventsCatalog[index]}
-                <span class="subscriptionStatus">Not subscribed</span>
+                <div style="float:left; margin: 5px 0px 5px 10px">
+                    ${eventsCatalog[index]}
+                    <span class="subscriptionStatus">Not subscribed</span>
+                </div>
                 <div class="eventDetails">
                     <table>
                         <tbody>
                             <tr>
-                                <td>Events Recorded</td>
-                                <td><span class="eventCount">0</span></td>
+                                <td><button class="pastEventsButton" type="button" onclick="getPastEvents('${eventsCatalog[index]}')">Get Past Events</button></td>
+                                <td style="padding: 5px;">Events Recorded</td>
+                                <td style="padding: 5px;"><span class="eventCount">0</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -140,6 +143,7 @@ function subscribeEvents(){
                 $(`#${eventName} .eventCount`).text(eventCache[eventName].length);
             })
         $(`#${eventName} .subscriptionStatus`).text('Subscribed');
+        $(`#${eventName} .pastEventsButton`).show();
     }
 }
 
@@ -151,4 +155,14 @@ function toHex(input){
 		arr1.push(hex);
 	 }
 	return '0x' + arr1.join('');
+}
+
+var pastEvents = {};
+function getPastEvents(eventType){
+    contract.getPastEvents(eventType,{fromBlock:0,toBlock:'latest'})
+        .then(function(result){
+            console.log(`Found ${result.length} past events of type ${eventType}`);
+            console.log(`   +- pastEvents.${eventType}`)
+            pastEvents[eventType] = result;
+        });
 }

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/attire.css" />
+        <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="scripts/web3.min.js"></script>
+        <script type="text/javascript" src="scripts/Core.js"></script>
+
+    </head>
+    <body onload="init()">
+        <div id="connectionParamSection">
+            <input type="text" placeholder="Server url/ip" id="server"/>
+            <input type="text" placeholder="Port" id="port" />
+            <button type="button" id="connectButton" onclick="connect()">Connect</button>
+            <div id="statusDisplay"></div>
+            <div id="coinbaseDisplay"></div>
+        </div>
+        <div id="sourceSection">
+            <textarea placeholder="Source" id="source"></textarea>
+            <textarea placeholder="ABI" id="abi"></textarea>
+            <textarea placeholder="Bytecode" id="bytecode"></textarea>
+        </div>
+        <div id="actionsSection">
+            <button type="button" id="deployButton" onclick="deploy()">Deploy</button>
+            <span>or</span>
+            <button type="button" id="hookButton" onclick="latch()">Hook</button>
+            <input type="text" placeholder="Contract Address" id="contractAddress" />
+        </div>
+        <div id="eventsSection">
+            <div class="heading">Events</div>
+            <div id="eventsCatalog">
+                
+            </div>
+        </div>
+    </body>
+</html>

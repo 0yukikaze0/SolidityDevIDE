@@ -1,0 +1,108 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #333333;
+}
+button {
+    border: none;
+    background-color: #ababab;
+    padding: 5px 10px 5px 10px;
+    color: #ffffff;
+    cursor: pointer;
+}
+input {
+    padding: 5px;
+    border: #ababab;
+    background-color: #ababab;
+}
+#connectButton {
+    background-color: #4caf50;
+}
+
+#connectionParamSection{
+    padding: 10px;
+    border-bottom: 1px dashed #ababab;
+    margin-bottom: 10px;
+}
+
+#sourceSection{
+    text-align: center;
+}
+
+textarea{
+    width: 98%;
+    margin: 5px;
+    background-color: #6d6d6d;
+    height: 80px;
+    color: #ffffff;
+}
+::placeholder{
+    color: #ffffff;
+}
+#abi{
+    height: 50px
+}
+#bytecode{
+    height: 50px
+}
+#actionsSection{
+    padding:10px;
+}
+span{
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#hookButton{
+    background-color: #0288d1;
+}
+#deployButton{
+    background-color: #4caf50;
+}
+#contractAddress{
+    width: 300px;
+}
+#eventsSection{
+    padding: 10px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top: 1px dashed #ababab;
+}
+#eventsSection .heading{
+    background-color: #009688;
+    padding: 5px;
+}
+#statusDisplay{
+    float: right;
+    color: #ffffff;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+}
+#coinbaseDisplay{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.eventCard{
+    font-size: 14px;
+    margin: 10px;
+    padding: 5px;
+    background-color: #444444;
+}
+
+.subscriptionStatus{
+    font-size: 10px;
+    border-left: 1px solid #ababab;
+    padding: 0px 0px 0px 10px;
+    margin-left: 10px;
+}
+.eventDetails{
+    float:right;
+}
+table{
+    font-size:10px;
+    color: #ffffff;
+}

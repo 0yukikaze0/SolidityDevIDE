@@ -2,15 +2,29 @@
     <head>
         <link rel="stylesheet" href="styles/attire.css" />
         <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
-        <script type="text/javascript" src="scripts/web3.min.js"></script>
+        <script type="text/javascript" src="scripts/web3.js"></script>
         <script type="text/javascript" src="scripts/Core.js"></script>
 
     </head>
     <body onload="init()">
         <div id="connectionParamSection">
-            <input type="text" placeholder="Server url/ip" id="server"/>
-            <input type="text" placeholder="Port" id="port" />
-            <button type="button" id="connectButton" onclick="connect()">Connect</button>
+            <div style="float:left; padding:5px;">
+                <select id="connectionType">
+                    <option value="hostport">Host / Port</option>
+                    <option value="url">URL</option>
+                </select>
+            </div>
+            <div style="float:left; padding:5px;">
+                <select id="connectionProtocol">
+                    <option value="ws">WS</option>
+                    <option value="http">HTTP</option>
+                    <option value="https">HTTPS</option>
+                </select>
+            </div>
+            <div id="connectionParams">
+
+            </div>
+            
             <div id="statusDisplay"></div>
             <div id="coinbaseDisplay"></div>
         </div>

@@ -15,13 +15,45 @@ function init(){
     $("#source").bind('paste',null, function(){
         setTimeout(parseSource,100)
     });
+    $('#connectionType').change(renderConnectionParams);
+    renderConnectionParams();
+}
+
+function renderConnectionParams(){
+    let connectionType = $('#connectionType').val();
+    let markup;
+    if(connectionType === 'hostport'){
+        markup = `
+            <input type="text" placeholder="Server url/ip" id="server"/>
+            <input type="text" placeholder="Port" id="port" />
+            <button type="button" id="connectButton" onclick="connect()">Connect</button>
+        `;
+    } else if (connectionType === 'url') {
+        markup = `
+            <input type="text" placeholder="Node URL" id="nodeUrl" style="width:300px;"/>
+            <button type="button" id="connectButton" onclick="connect()">Connect</button>
+        `;
+    }
+    $('#connectionParams').html(markup);
 }
 
 function connect(){
-    web3 = new Web3(new Web3.providers.WebsocketProvider('ws://' + $('#server').val() + ':' + $('#port').val()))
-    eth = web3.eth;
-    shh = web3.shh;
-    bzz = web3.bzz;
+    let connectionType = $('#connectionType').val();
+    let protocol = $('#connectionProtocol').val();
+    if(connectionType === 'hostport') {
+        let url = protocol + '://' + $('#server').val() + ':' + $('#port').val();
+        web3 = new Web3(new Web3.providers.WebsocketProvider(url))
+        eth = web3.eth;
+        shh = web3.shh;
+        bzz = web3.bzz;
+    } else if(connectionType === 'url') {
+        let url = protocol + '://' + $('#nodeUrl').val() + '/';
+        web3 = new Web3(new Web3.providers.WebsocketProvider(url))
+        eth = web3.eth;
+        shh = web3.shh;
+        bzz = web3.bzz;
+    }
+
 
     web3.eth.getBlockNumber()
         .then((blockNumber) => {
@@ -99,7 +131,7 @@ function deploy(){
     contract.deploy({ data: '0x' + bytecode }).send(
         {
             from: coinbase,
-            gas: 1000000
+            gas: 5000000			     
         }
     )
     .on('error', function(error){console.log('error')})
@@ -148,13 +180,7 @@ function subscribeEvents(){
 }
 
 function toHex(input){
-	var arr1 = [];
-	for (var n = 0, l = input.length; n < l; n ++) 
-     {
-		var hex = Number(input.charCodeAt(n)).toString(16);
-		arr1.push(hex);
-	 }
-	return '0x' + arr1.join('');
+	return web3.utils.asciiToHex(input).padEnd(66,0);	
 }
 
 var pastEvents = {};

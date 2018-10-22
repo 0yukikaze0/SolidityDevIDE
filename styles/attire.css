@@ -23,6 +23,7 @@ input {
     padding: 10px;
     border-bottom: 1px dashed #ababab;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 
 #sourceSection{
@@ -51,6 +52,9 @@ textarea{
 span{
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
+}
+#connectionParams{
+    float: left;
 }
 #hookButton{
     background-color: #0288d1;
